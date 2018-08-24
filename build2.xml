@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ant-jmeter-test" default="run" basedir=".">
+    <tstamp>
+        <format property="time" pattern="yyyyMMddhhmmss" />
+    </tstamp>
+	<property name="user.dir" value="${basedir}"/>
+    <property environment="env"/>
+    <property name="ReportName" value="TestReport" />
+	<property name="detailName" value="DetailReport" />
+    <!-- 需要改成自己本地的 Jmeter 目录--> 
+    <property name="jmeter.home" value="${env.JMETER_HOME}"/>
+    <!-- jmeter生成jtl、html格式的结果报告的路径--> 
+    <property name="jmeter.result.dir" value="${user.dir}/results" />
+    <!-- 生成的报告的前缀-->  
+    <property name="jmeter.result.jtlName" value="${jmeter.result.dir}/${ReportName}.jtl" />
+    <property name="jmeter.result.htmlName" value="${jmeter.result.dir}/${detailName}.html" />
+    <property name="report.title" value="Load Test Results"/>
+    <property name="ComputerName" value="N12275-PC"/>
+	 <!-- Should report include response data for failures? -->
+    <property name="show-data" value="n"/>
+
+    <property name="format" value="2.1"/>
+    
+    <condition property="style_version" value="_21">
+        <equals arg1="${format}" arg2="2.1"/>
+    </condition>
+
+    <condition property="funcMode">
+        <equals arg1="${show-data}" arg2="y"/>
+    </condition>
+    
+    <condition property="funcMode" value="false">
+      <not>
+        <equals arg1="${show-data}" arg2="y"/>
+      </not>
+    </condition>
+    <target name="run">
+        <echo message="start run ..."/>
+        <antcall target="report" />
+    </target>
+    <path id="xslt.classpath">
+        <fileset dir="${jmeter.home}/lib" includes="xalan*.jar"/>
+        <fileset dir="${jmeter.home}/lib" includes="serializer*.jar"/>
+    </path>
+    <target name="report">
+	<tstamp><format property="report.datestamp" pattern="yyyy/MM/dd HH:mm"/></tstamp>
+	<xslt classpathref="xslt.classpath" force="true" in="${jmeter.result.jtlName}" out="${jmeter.result.htmlName}" style="${jmeter.home}/extras/jmeter.results.shanhe.me.xsl"> 
+		  <param name="showData" expression="${show-data}"/>
+		  <param name="titleReport" expression="${report.title}"/>
+		  <param name="dateReport" expression="${report.datestamp}"/>
+	 </xslt>
+    </target>
+</project>

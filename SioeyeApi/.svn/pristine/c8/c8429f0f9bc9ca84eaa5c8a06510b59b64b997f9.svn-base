@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="测试计划" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组-video" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1513304509000</longProp>
+        <longProp name="ThreadGroup.end_time">1513304509000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="TestPlan.comments">更新视频标题</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-login" enabled="true">
+          <stringProp name="TestPlan.comments">账号登录</stringProp>
+          <boolProp name="ApiSampler.var.sessiontoken">false</boolProp>
+          <stringProp name="服务器名称:">${server}</stringProp>
+          <stringProp name="路径:">/functions/login</stringProp>
+          <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="type" elementType="Argument">
+                <stringProp name="Argument.name">type</stringProp>
+                <stringProp name="Argument.value">app</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">类型，type=app或iris4g或web(默认为app)；如果是app类型会刷新refreshtoken，以确保单点登录</stringProp>
+              </elementProp>
+              <elementProp name="username" elementType="Argument">
+                <stringProp name="Argument.name">username</stringProp>
+                <stringProp name="Argument.value">${username}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">用户注册用到的email\regphone,会优先匹配邮箱，再匹配email；目前按PRD定义，不支持sioeyeid登录。</stringProp>
+              </elementProp>
+              <elementProp name="password" elementType="Argument">
+                <stringProp name="Argument.name">password</stringProp>
+                <stringProp name="Argument.value">${password}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">密码,必填（客户端使用md5加密，并转小写）</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="Content-Type" elementType="Argument">
+                <stringProp name="Argument.name">Content-Type</stringProp>
+                <stringProp name="Argument.value">application/json</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="ApiSampler,var.status">true</boolProp>
+          <boolProp name="ApiSampler.prop.status">false</boolProp>
+          <stringProp name="ApiSampler.var.adds">objectid,receivelike=receivelike_before_like</stringProp>
+        </org.apache.jmeter.sampler.ApiSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+            </collectionProp>
+            <stringProp name="TestPlan.comments">登录成功</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-search_broadcasts" enabled="true">
+          <stringProp name="TestPlan.comments">返回我的视频列表或者objectid的视频列表</stringProp>
+          <boolProp name="ApiSampler.var.sessiontoken">true</boolProp>
+          <stringProp name="服务器名称:">${server}</stringProp>
+          <stringProp name="路径:">/functions/search_broadcasts</stringProp>
+          <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="objectid" elementType="Argument">
+                <stringProp name="Argument.name">objectid</stringProp>
+                <stringProp name="Argument.value">${objectid}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">用户id</stringProp>
+              </elementProp>
+              <elementProp name="pageno" elementType="Argument">
+                <stringProp name="Argument.name">pageno</stringProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">页码</stringProp>
+              </elementProp>
+              <elementProp name="pagesize" elementType="Argument">
+                <stringProp name="Argument.name">pagesize</stringProp>
+                <stringProp name="Argument.value">10</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">页大小</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="Content-Type" elementType="Argument">
+                <stringProp name="Argument.name">Content-Type</stringProp>
+                <stringProp name="Argument.value">application/json</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="ApiSampler,var.status">true</boolProp>
+          <boolProp name="ApiSampler.prop.status">false</boolProp>
+          <stringProp name="ApiSampler.var.adds">conversationid,success</stringProp>
+        </org.apache.jmeter.sampler.ApiSampler>
+        <hashTree/>
+        <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-cancel_favorites_video" enabled="true">
+          <stringProp name="TestPlan.comments">取消收藏视频</stringProp>
+          <boolProp name="ApiSampler.var.sessiontoken">true</boolProp>
+          <stringProp name="服务器名称:">${server}</stringProp>
+          <stringProp name="路径:">/functions/cancel_favorites_video</stringProp>
+          <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="conversationId" elementType="Argument">
+                <stringProp name="Argument.name">conversationId</stringProp>
+                <stringProp name="Argument.value">${conversationid_1}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">被收藏的视频会话Id</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="Content-Type" elementType="Argument">
+                <stringProp name="Argument.name">Content-Type</stringProp>
+                <stringProp name="Argument.value">application/json</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="ApiSampler,var.status">true</boolProp>
+          <boolProp name="ApiSampler.prop.status">false</boolProp>
+          <stringProp name="ApiSampler.var.adds"></stringProp>
+        </org.apache.jmeter.sampler.ApiSampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果（If）控制器" enabled="true">
+          <stringProp name="TestPlan.comments">如果存在历史视频</stringProp>
+          <stringProp name="IfController.condition">${__exist_variable(conversationid_1)}==true</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-favorites_video" enabled="true">
+            <stringProp name="TestPlan.comments">用户收藏视频</stringProp>
+            <boolProp name="ApiSampler.var.sessiontoken">true</boolProp>
+            <stringProp name="服务器名称:">${server}</stringProp>
+            <stringProp name="路径:">/functions/favorites_video</stringProp>
+            <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="conversationId" elementType="Argument">
+                  <stringProp name="Argument.name">conversationId</stringProp>
+                  <stringProp name="Argument.value">${conversationid_1}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <stringProp name="Argument.desc">被收藏的视频会话Id</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="Content-Type" elementType="Argument">
+                  <stringProp name="Argument.name">Content-Type</stringProp>
+                  <stringProp name="Argument.value">application/json</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                  <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                  <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="ApiSampler,var.status">true</boolProp>
+            <boolProp name="ApiSampler.prop.status">false</boolProp>
+            <stringProp name="ApiSampler.var.adds"></stringProp>
+          </org.apache.jmeter.sampler.ApiSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="TestPlan.comments">收藏视频成功</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-favorites_video" enabled="true">
+            <stringProp name="TestPlan.comments">用户收藏视频-获取是否已经被收藏</stringProp>
+            <boolProp name="ApiSampler.var.sessiontoken">true</boolProp>
+            <stringProp name="服务器名称:">${server}</stringProp>
+            <stringProp name="路径:">/functions/favorites_video</stringProp>
+            <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="conversationId" elementType="Argument">
+                  <stringProp name="Argument.name">conversationId</stringProp>
+                  <stringProp name="Argument.value">${conversationid_1}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <stringProp name="Argument.desc">被收藏的视频会话Id</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="Content-Type" elementType="Argument">
+                  <stringProp name="Argument.name">Content-Type</stringProp>
+                  <stringProp name="Argument.value">application/json</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                  <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                  <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="ApiSampler,var.status">true</boolProp>
+            <boolProp name="ApiSampler.prop.status">false</boolProp>
+            <stringProp name="ApiSampler.var.adds"></stringProp>
+          </org.apache.jmeter.sampler.ApiSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="656874802">&quot;code&quot;:&quot;7040&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="username" elementType="Argument">
+            <stringProp name="Argument.name">username</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties  ,username)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">测试账号用户名</stringProp>
+          </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">${__MD5(${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties ,password)},)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">测试账号密码</stringProp>
+          </elementProp>
+          <elementProp name="upload_picture_path" elementType="Argument">
+            <stringProp name="Argument.name">upload_picture_path</stringProp>
+            <stringProp name="Argument.value">${__env(JMETER_HOME,,)}/data/picture</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="server" elementType="Argument">
+            <stringProp name="Argument.name">server</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/config.properties  ,server)}</stringProp>
+            <stringProp name="Argument.desc">服务器名称</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="工作台" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

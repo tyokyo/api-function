@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="测试计划" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组-adplace" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">6</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1513304509000</longProp>
+        <longProp name="ThreadGroup.end_time">1513304509000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="TestPlan.comments">获取广告具体内容列表</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-get_ad_list" enabled="true">
+          <stringProp name="TestPlan.comments">获取广告具体内容列表</stringProp>
+          <boolProp name="ApiSampler.var.sessiontoken">false</boolProp>
+          <stringProp name="服务器名称:">${server}</stringProp>
+          <stringProp name="路径:">/functions/get_ad_list</stringProp>
+          <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adtype" elementType="Argument">
+                <stringProp name="Argument.name">adtype</stringProp>
+                <stringProp name="Argument.value">${adtag}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">广告类型 [广告类型 1=单一用户；2=用户列表；3=单一视频；4=视频列表；5=外链；6=实名认证跳转)]</stringProp>
+              </elementProp>
+              <elementProp name="adplaceid" elementType="Argument">
+                <stringProp name="Argument.name">adplaceid</stringProp>
+                <stringProp name="Argument.value">2</stringProp>
+                <stringProp name="Argument.desc">广告位编号</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="Content-Type" elementType="Argument">
+                <stringProp name="Argument.name">Content-Type</stringProp>
+                <stringProp name="Argument.value">application/json</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="ApiSampler,var.status">true</boolProp>
+          <boolProp name="ApiSampler.prop.status">false</boolProp>
+          <stringProp name="ApiSampler.var.adds"></stringProp>
+        </org.apache.jmeter.sampler.ApiSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <elonmeter.csv.jmeter.GridDataSetConfig guiclass="elonmeter.csv.jmeter.GridDataSetConfigGui" testclass="elonmeter.csv.jmeter.GridDataSetConfig" testname="Grid Data Set Config" enabled="true">
+          <stringProp name="variableNames">adtag,checkString,description</stringProp>
+          <collectionProp name="threadgriddataset">
+            <collectionProp name="828566827">
+              <stringProp name="49">1</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="2114838726">1=单一用户</stringProp>
+            </collectionProp>
+            <collectionProp name="108991547">
+              <stringProp name="50">2</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="-1888834485">2=用户列表</stringProp>
+            </collectionProp>
+            <collectionProp name="-556422995">
+              <stringProp name="51">3</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="-2122692736">3=单一视频</stringProp>
+            </collectionProp>
+            <collectionProp name="1282812914">
+              <stringProp name="52">4</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="-1660967931">4=视频列表</stringProp>
+            </collectionProp>
+            <collectionProp name="637441220">
+              <stringProp name="53">5</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="2382672">5=外链</stringProp>
+            </collectionProp>
+            <collectionProp name="-1718506293">
+              <stringProp name="54">6</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="-1124084884">6=实名认证跳转</stringProp>
+            </collectionProp>
+          </collectionProp>
+        </elonmeter.csv.jmeter.GridDataSetConfig>
+        <hashTree/>
+      </hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="username" elementType="Argument">
+            <stringProp name="Argument.name">username</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties  ,username)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">测试账号用户名</stringProp>
+          </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">${__MD5(${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties ,password)},)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">测试账号密码</stringProp>
+          </elementProp>
+          <elementProp name="server" elementType="Argument">
+            <stringProp name="Argument.name">server</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/config.properties  ,server)}</stringProp>
+            <stringProp name="Argument.desc">服务器名称</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="工作台" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

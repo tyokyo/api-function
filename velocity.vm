@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+  <title>Test Results Report - Overview</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="description" content="Api test results." />
+  </head>
+<body style="font-family:楷体">
+<h1 align="left">Api Test Results</h1>
+<hr />
+<tr align="left">Number of Samplers in Test Suite: $testSuite.getTests()</tr>
+<hr />
+<tr align="left">Test Suite Execution time: $testSuite.getTime()ms</tr>
+<hr />
+<tr align="left">FAILURES: <font color="red">$testSuite.getFailures()</font></tr>
+<hr />
+<tr><a href="$url">Detail report</a> </tr>
+<hr />
+</body>
+</html>
+
+

@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="测试计划" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组-搜脸" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1517904382000</longProp>
+        <longProp name="ThreadGroup.end_time">1517904382000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="jp@gc - Api Sampler" enabled="false">
+          <boolProp name="ApiSampler.var.sessiontoken">false</boolProp>
+          <stringProp name="服务器名称:">face.sioeye.cn/face</stringProp>
+          <stringProp name="路径:">mface/search_face</stringProp>
+          <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="current_rotate" elementType="Argument">
+                <stringProp name="Argument.name">current_rotate</stringProp>
+                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.desc">false</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="openid" elementType="Argument">
+                <stringProp name="Argument.name">openid</stringProp>
+                <stringProp name="Argument.value">ovZTu0OqqEhLPeny_art2m8NntvI</stringProp>
+                <stringProp name="Argument.desc">false</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="conversationid" elementType="Argument">
+                <stringProp name="Argument.name">conversationid</stringProp>
+                <stringProp name="Argument.value">${conversationid}</stringProp>
+                <stringProp name="Argument.desc">false</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="aid" elementType="Argument">
+                <stringProp name="Argument.name">aid</stringProp>
+                <stringProp name="Argument.value">${aid}</stringProp>
+                <stringProp name="Argument.desc">false</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <boolProp name="ApiSampler,var.status">true</boolProp>
+          <boolProp name="ApiSampler.prop.status">false</boolProp>
+          <stringProp name="ApiSampler.var.adds"></stringProp>
+          <collectionProp name="threads_file_upload">
+            <collectionProp name="1445636278">
+              <stringProp name="-2424316">${path}${people_1}</stringProp>
+              <stringProp name="3143036">file</stringProp>
+              <stringProp name="-1487394660">image/jpeg</stringProp>
+            </collectionProp>
+          </collectionProp>
+        </org.apache.jmeter.sampler.ApiSampler>
+        <hashTree/>
+        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="ForEach控制器" enabled="true">
+          <stringProp name="ForeachController.inputVal">people</stringProp>
+          <stringProp name="ForeachController.returnVal">peopleG</stringProp>
+          <boolProp name="ForeachController.useSeparator">true</boolProp>
+        </ForeachController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP请求-search_face" enabled="true">
+            <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+              <collectionProp name="HTTPFileArgs.files">
+                <elementProp name="${path}${peopleG}" elementType="HTTPFileArg">
+                  <stringProp name="File.path">${path}${peopleG}</stringProp>
+                  <stringProp name="File.paramname">file</stringProp>
+                  <stringProp name="File.mimetype">image/jpeg</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="current_rotate" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">0</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">current_rotate</stringProp>
+                </elementProp>
+                <elementProp name="openid" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">ovZTu0OqqEhLPeny_art2m8NntvI</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">openid</stringProp>
+                </elementProp>
+                <elementProp name="conversationid" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${conversationid}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">conversationid</stringProp>
+                </elementProp>
+                <elementProp name="aid" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${aid}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">aid</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">face.sioeye.cn/face</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">mface/search_face</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-747766406">&quot;status&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">cache-control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="正则表达式提取器" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">key</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;key&quot;:&quot;(.+?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">error</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+              <stringProp name="VAR">keyG</stringProp>
+              <stringProp name="JSONPATH">$.value.key</stringProp>
+              <stringProp name="DEFAULT"></stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+          </hashTree>
+          <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-get_search_videos_${peopleG}" enabled="true">
+            <stringProp name="服务器名称:">face.sioeye.cn/face/</stringProp>
+            <stringProp name="路径:">face/get_search_videos</stringProp>
+            <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="openid" elementType="Argument">
+                  <stringProp name="Argument.name">openid</stringProp>
+                  <stringProp name="Argument.value">ovZTu0OqqEhLPeny_art2m8NntvI</stringProp>
+                  <stringProp name="Argument.desc">微信openid</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="key" elementType="Argument">
+                  <stringProp name="Argument.name">key</stringProp>
+                  <stringProp name="Argument.value">${key}</stringProp>
+                  <stringProp name="Argument.desc">search face返回来的值</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="Content-Type" elementType="Argument">
+                  <stringProp name="Argument.name">Content-Type</stringProp>
+                  <stringProp name="Argument.value">application/json</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                  <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                  <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                  <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="ApiSampler,var.status">true</boolProp>
+            <boolProp name="ApiSampler.prop.status">false</boolProp>
+            <stringProp name="ApiSampler.var.adds"></stringProp>
+            <boolProp name="ApiSampler.var.sessiontoken">false</boolProp>
+            <stringProp name="描述"></stringProp>
+            <collectionProp name="threads_file_upload"/>
+          </org.apache.jmeter.sampler.ApiSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-747766406">&quot;status&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
+              <stringProp name="VAR">searchResult_${peopleG}</stringProp>
+              <stringProp name="JSONPATH">$.value.list.length()</stringProp>
+              <stringProp name="DEFAULT"></stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
+              <stringProp name="VAR">confidenceG_${peopleG}</stringProp>
+              <stringProp name="JSONPATH">$.value.list[*].confidence</stringProp>
+              <stringProp name="DEFAULT"></stringProp>
+              <stringProp name="VARIABLE"></stringProp>
+              <stringProp name="SUBJECT">BODY</stringProp>
+            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP请求-search_face-All" enabled="false">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="F:\Video\football\photo\11hongjie.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\11hongjie.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\2-dengxiang.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\2-dengxiang.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\3-wanshan.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\3-wanshan.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\4jiangpeng.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\4jiangpeng.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\5-liangjia.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\5-liangjia.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\6-xingxing.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\6-xingxing.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\7-xuedong.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\7-xuedong.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\8-chenyi.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\8-chenyi.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\9-zhangchao.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\9-zhangchao.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\10-zhangqiang.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\10-zhangqiang.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\1-tiger.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\1-tiger.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\12-zhenghua.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\12-zhenghua.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+              <elementProp name="F:\Video\football\photo\13-wenlong.png" elementType="HTTPFileArg">
+                <stringProp name="File.path">F:\Video\football\photo\13-wenlong.png</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">image/png</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="current_rotate" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">current_rotate</stringProp>
+              </elementProp>
+              <elementProp name="openid" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">ovZTu0OqqEhLPeny_art2m8NntvI</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">openid</stringProp>
+              </elementProp>
+              <elementProp name="conversationid" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">a152abe84b9d46c99dbfed5b87613d56</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">conversationid</stringProp>
+              </elementProp>
+              <elementProp name="aid" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">59b74f506700442c90604d8a80d57dc7</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">aid</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">face.sioeye.cn/face</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">mface/search_face</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-747766406">&quot;status&quot;:true</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="false">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="正则表达式提取器" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">key </stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;key&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">error</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果（If）控制器" enabled="false">
+          <stringProp name="TestPlan.comments">如果search face返回结果，就执行获取视频的接口</stringProp>
+          <stringProp name="IfController.condition">${status}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP请求-get_search_videos" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;openid&quot;: &quot;ovZTu0OqqEhLPeny_art2m8NntvI&quot;,&#xd;
+&quot;key&quot;:&quot;&amp;{key}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">face.sioeye.cn/face/</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">face/get_search_videos</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-747766406">&quot;status&quot;:true</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="DebugSampler_${activityName}_${peopleG}" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>true</responseHeaders>
+              <requestHeaders>true</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <fileName>true</fileName>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <elonmeter.csv.jmeter.GridDataSetConfig guiclass="elonmeter.csv.jmeter.GridDataSetConfigGui" testclass="elonmeter.csv.jmeter.GridDataSetConfig" testname="Grid Data Set Config" enabled="true">
+          <stringProp name="variableNames">conversationid,aid,activityName</stringProp>
+          <collectionProp name="threadgriddataset">
+            <collectionProp name="1039230148">
+              <stringProp name="-1288278621">b411b46afdc4434aa858cb153083d63e</stringProp>
+              <stringProp name="-1291131915">59015edeec664952bc77980c8d265441</stringProp>
+              <stringProp name="-851209590">5人制-12点方向球门侧门住-1080P-150CM</stringProp>
+            </collectionProp>
+            <collectionProp name="141114235">
+              <stringProp name="18975050">ba2870aeb94f468dadfaba4fba438705</stringProp>
+              <stringProp name="-1072688956">cd4be01b9c3747c0b6c1af24523598d8</stringProp>
+              <stringProp name="-2066140477">5人制-12点方向球门侧门住-1080P-150CM-cgj</stringProp>
+            </collectionProp>
+          </collectionProp>
+        </elonmeter.csv.jmeter.GridDataSetConfig>
+        <hashTree/>
+      </hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="people_1" elementType="Argument">
+            <stringProp name="Argument.name">people_1</stringProp>
+            <stringProp name="Argument.value">11hongjie.png</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="people_2" elementType="Argument">
+            <stringProp name="Argument.name">people_2</stringProp>
+            <stringProp name="Argument.value">2-dengxiang.png</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="path" elementType="Argument">
+            <stringProp name="Argument.name">path</stringProp>
+            <stringProp name="Argument.value">${__getEnv(JMETER_HOME)}/data/photo/</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <kg.apc.jmeter.threads.SteppingThreadGroup guiclass="kg.apc.jmeter.threads.SteppingThreadGroupGui" testclass="kg.apc.jmeter.threads.SteppingThreadGroup" testname="jp@gc - Stepping Thread Group (deprecated)" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.num_threads">30</stringProp>
+        <stringProp name="Threads initial delay">0</stringProp>
+        <stringProp name="Start users count">10</stringProp>
+        <stringProp name="Start users count burst">0</stringProp>
+        <stringProp name="Start users period">5</stringProp>
+        <stringProp name="Stop users count">5</stringProp>
+        <stringProp name="Stop users period">1</stringProp>
+        <stringProp name="flighttime">60</stringProp>
+        <stringProp name="rampUp">5</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+      </kg.apc.jmeter.threads.SteppingThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">D:\soft\Jmeter\demo\data\account.txt</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">usernameA,passwordA</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <org.apache.jmeter.sampler.ApiSampler guiclass="org.apache.jmeter.sampler.gui.ApiSamplerGUI" testclass="org.apache.jmeter.sampler.ApiSampler" testname="HTTP请求-login" enabled="true">
+          <stringProp name="TestPlan.comments">类型，type=app或iris4g或web(默认为app)</stringProp>
+          <stringProp name="服务器名称:">${server}</stringProp>
+          <stringProp name="路径:">/functions/login</stringProp>
+          <elementProp name="ApiSampler.user_defined_variables" elementType="Arguments" guiclass="org.apache.jmeter.sampler.gui.ArgumentsPanel2" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="type" elementType="Argument">
+                <stringProp name="Argument.name">type</stringProp>
+                <stringProp name="Argument.value">${type}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">类型，type=app或iris4g或web(默认为app)；如果是app类型会刷新refreshtoken，以确保单点登录</stringProp>
+              </elementProp>
+              <elementProp name="username" elementType="Argument">
+                <stringProp name="Argument.name">username</stringProp>
+                <stringProp name="Argument.value">${sioeyeid}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">用户注册用到的email\regphone,会优先匹配邮箱，再匹配email；目前按PRD定义，不支持sioeyeid登录。</stringProp>
+              </elementProp>
+              <elementProp name="password" elementType="Argument">
+                <stringProp name="Argument.name">password</stringProp>
+                <stringProp name="Argument.value">${password}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <stringProp name="Argument.desc">密码,必填（客户端使用md5加密，并转小写）</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="ApiSampler.user_defined_headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="Content-Type" elementType="Argument">
+                <stringProp name="Argument.name">Content-Type</stringProp>
+                <stringProp name="Argument.value">application/json</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Id" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Id</stringProp>
+                <stringProp name="Argument.value">usYhGBBKDMiypaKFV8fc3kE4</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Sign_Key" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Sign_Key</stringProp>
+                <stringProp name="Argument.value">5f3773d461775804ca2c942f8589f1d6,1476178217671</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="X_Sioeye_App_Production" elementType="Argument">
+                <stringProp name="Argument.name">X_Sioeye_App_Production</stringProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="ApiSampler,var.status">true</boolProp>
+          <boolProp name="ApiSampler.prop.status">false</boolProp>
+          <stringProp name="ApiSampler.var.adds">success,objectid,followeenum,sioeyeid</stringProp>
+          <boolProp name="ApiSampler.var.sessiontoken">false</boolProp>
+          <collectionProp name="threads_file_upload"/>
+        </org.apache.jmeter.sampler.ApiSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="false">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-396519749">${checkString}</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(!&quot;${emailG}&quot;.equals(&quot;&quot;)){
+	vars.put(&quot;username&quot;,&quot;${emailG}&quot;);
+}
+if(!&quot;${phoneG}&quot;.equals(&quot;&quot;)){
+	vars.put(&quot;username&quot;,&quot;${phoneG}&quot;);
+}
+if(!&quot;${sioeyeidG}&quot;.equals(&quot;&quot;)){
+	vars.put(&quot;username&quot;,&quot;${sioeyeidG}&quot;);
+}
+</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+        </hashTree>
+        <elonmeter.csv.jmeter.GridDataSetConfig guiclass="elonmeter.csv.jmeter.GridDataSetConfigGui" testclass="elonmeter.csv.jmeter.GridDataSetConfig" testname="Grid Data Set Config" enabled="true">
+          <stringProp name="variableNames">type,checkString,description,emailG,phoneG,sioeyeidG</stringProp>
+          <collectionProp name="threadgriddataset">
+            <collectionProp name="-1707860495">
+              <stringProp name="96801">app</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="-1194332168">${email}</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <collectionProp name="-2010881810">
+              <stringProp name="96801">app</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="-883607450">${phone}</stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <collectionProp name="1116410013">
+              <stringProp name="96801">app</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="680625683">${sioeyeid}</stringProp>
+            </collectionProp>
+            <collectionProp name="1897836299">
+              <stringProp name="-1180384762">iris4g</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="-1194332168">${email}</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <collectionProp name="1594814984">
+              <stringProp name="-1180384762">iris4g</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="-883607450">${phone}</stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <collectionProp name="427139511">
+              <stringProp name="-1180384762">iris4g</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="680625683">${sioeyeid}</stringProp>
+            </collectionProp>
+            <collectionProp name="1944976404">
+              <stringProp name="117588">web</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="-1194332168">${email}</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <collectionProp name="1641955089">
+              <stringProp name="117588">web</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="-883607450">${phone}</stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <collectionProp name="474279616">
+              <stringProp name="117588">web</stringProp>
+              <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+              <stringProp name="927843401">登录成功</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="680625683">${sioeyeid}</stringProp>
+            </collectionProp>
+          </collectionProp>
+        </elonmeter.csv.jmeter.GridDataSetConfig>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>true</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <fileName>true</fileName>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>true</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <fileName>true</fileName>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.BytesThroughputOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Bytes Throughput Over Time" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>true</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <fileName>true</fileName>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">1000</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+      </hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">${__MD5(${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties  ,password)},)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">测试账号密码</stringProp>
+          </elementProp>
+          <elementProp name="sioeyeid" elementType="Argument">
+            <stringProp name="Argument.name">sioeyeid</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties  ,sioeye_id)}</stringProp>
+            <stringProp name="Argument.desc">sioeye_id</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="email" elementType="Argument">
+            <stringProp name="Argument.name">email</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties  ,email)}</stringProp>
+            <stringProp name="Argument.desc">sioeye_id</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="phone" elementType="Argument">
+            <stringProp name="Argument.name">phone</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/account.properties  ,phone_number)}</stringProp>
+            <stringProp name="Argument.desc">sioeye_id</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="server" elementType="Argument">
+            <stringProp name="Argument.name">server</stringProp>
+            <stringProp name="Argument.value">${__getConfiguration(${__getEnv(JMETER_HOME)}/data/config.properties  ,server)}</stringProp>
+            <stringProp name="Argument.desc">服务器名称</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="工作台" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>
